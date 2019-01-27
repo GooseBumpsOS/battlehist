@@ -23,8 +23,8 @@ class CMSController extends AbstractController
 
         $request = Request::createFromGlobals();
 
-        $login = 'Kb$8CRoMbYkpzkmP*1OJO';
-        $pass =  'g#C58zchJoggzdH$z}JMg';
+        $login = 'login';
+        $pass =  'pass';
 
         if ($request->query->get('_hkeyp') == $pass && $request->query->get('_hkeyu') == $login)
         {
