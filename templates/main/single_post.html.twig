@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<style>
+
+    #wrapper{
+
+        display: block !important;
+    }
+
+</style>
+{% set mainPageLink = '/' %}
+
+<html>
+<head>
+    <title>{{ post_page.header }}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}" />
+
+    <meta name="description" content ="{{ post_page.headerText }} {{ post_page.header}}">
+
+    <link rel="icon" type="image/png" href="{{ asset('favicon/favicon_64x64.png') }}" sizes="64x64">
+    
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <h5><a href="{{ mainPageLink }}">Выстрел сквозь века</a></h5>
+        <nav class="links">
+            <ul>
+                <li><a href="{{ mainPageLink }}">Главная</a></li>
+                <li><a href="random">Мне повезет</a></li>
+                <li><a href="about">О нас</a></li>
+            </ul>
+        </nav>
+        <nav class="main">
+            <ul>
+                <li class="search">
+                    <a class="fa-search" href="#search">Поиск</a>
+                    <form id="search" method="get" action="#">
+                        <input type="text" name="query" placeholder="Поиск" />
+                    </form>
+                </li>
+                <li class="menu">
+                    <a class="fa-bars" href="#menu">Меню</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Menu -->
+    <section id="menu">
+
+        <!-- Search -->
+        <section>
+            <form class="search" method="get" action="#">
+                <input type="text" name="query" placeholder="Поиск" />
+            </form>
+        </section>
+
+               <!-- Links -->
+        <section>
+            <ul class="links">
+                <li>
+                    <a href="vietnam">
+                        <h3>Вьетнам</h3>
+                        <p>Война во Вьетнаме</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="chechnya">
+                        <h3>Чеченский конфликт</h3>
+                        <p>Первый и Второй Чеченский конфликт</p>
+                    </a>
+                </li>
+                {#<li>#}
+                    {#<a href="iraq">#}
+                        {#<h3>Война в Ираке</h3>#}
+                        {#<p>Вторжение США в Ирак для свержения Саддама Хусейна</p>#}
+                    {#</a>#}
+                {#</li>#}
+                {#<li>#}
+                    {#<a href="arab–israeli">#}
+                        {#<h3>Арабо-израильский конфликт</h3>#}
+                        {#<p>История конфликтов начиная с 1940 года </p>#}
+                    {#</a>#}
+                {#</li>#}
+                <li>
+                    <a href="pmv">
+                        <h3>Первая Мировая Война</h3>
+                        <p>Один из самых широкомасштабных вооружённых конфликтов в истории человечества.</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Actions -->
+        <section>
+            <ul class="actions stacked">
+                <li><a href="random" class="button large fit">Мне повезет</a></li>
+            </ul>
+        </section>
+
+    </section>
+
+
+    {#Начало#}
+
+<!-- Main -->
+<div id="main">
+
+    <!-- Post -->
+    <article class="post">
+        <header>
+            <div class="title">
+
+                <h2><a href="#">{{ post_page.header }}</a></h2>
+                <p>{{ post_page.headerText }}</p>
+                <p> <a href="/"> Главная </a> ● <a href="{{ hleb_crosh_link }}"> {{ hleb_crosh }} </a> ● <a href="{{ post_page.slug }}"> {{ post_page.header }} </a> </p>
+            </div>
+            <div class="meta">
+                <time class="published" datetime="{{ post_page.date|date("d-m-Y") }}">{{ post_page.date|date("d-m-Y") }}</time>
+                <a href="#" class="author"><span class="name">Прапорщик Задов</span><img src="{{ asset('images/vano_auth.jpg') }}" alt="Фото автора" /></a>
+            </div>
+        </header>
+        <span class="image featured"><img src="{{ post_page.photoLink }}" alt="{{ post_page.header }}" /></span>
+
+        {% if post_page.text != 'PicOnly' %}
+
+        <p>  {{ post_page.text|striptags('<a> <li> <ul> <strong> <h2> <h3> <img> <iframe>') |raw |nl2br }}   </p>
+        
+        {% endif %}
+        <p>Читайте также: <a href="https://battlehist.ru/{{readMoreLink[0].slug}}">{{ readMoreLink[0].header }}</a></p>
+
+
+        <footer>
+            <ul class="stats">
+                <li><a href="?query={{ post_page.tag }}">{{ post_page.tag }}</a></li>
+                <li><a href="#" class="icon fa-heart">{{ post_page.views // 38 }}</a></li>
+                <li><a href="#" class="icon fa-comment">{{ post_page.views }}</a></li>
+            </ul>
+        </footer>
+    </article>
+
+</div>
+
+
+
+
+
+
+
+{% include 'main/footer.html.twig' %}

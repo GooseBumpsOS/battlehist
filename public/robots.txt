@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /CMS
+Disallow: /random
+Disallow: /page-0
+Disallow: /chechnya
+Disallow: /vietnam
+Disallow: /pmv

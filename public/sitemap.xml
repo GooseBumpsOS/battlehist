@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>https://battlehist.ru/</loc>
+	<lastmod>2019-01-08T08:38:58+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://battlehist.ru/about</loc>
+	<lastmod>2019-01-08T08:38:58+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://battlehist.ru/Konflikt_v_CHechenskoy_respublike</loc>
+	<lastmod>2019-01-08T08:39:01+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://battlehist.ru/Armii_uchastnitsyi_pervoy_mirovoy_voynyi</loc>
+	<lastmod>2019-01-08T08:39:01+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://battlehist.ru/Voyna_vo_V'etname_-_Kratko</loc>
+	<lastmod>2019-01-08T08:39:01+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://battlehist.ru/Metodyi_vedeniya_voynyi_vo_V'etname</loc>
+	<lastmod>2019-01-09T08:39:01+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+</urlset>

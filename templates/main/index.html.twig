@@ -1,0 +1,126 @@
+{% include 'main/header.html.twig' %}
+
+{% if post_count > 3 %}
+
+    {% set post_count_twig_var = 3 %}
+
+{% else  %}
+
+    {% set post_count_twig_var =  post_count %}
+
+{% endif %}
+
+
+
+{% set mainPageLink = '/' %}
+
+  <meta name="description" content="В нашем блоге вас ожидают публикации, направленные на изучение или освещение конфликтов: горячих точек, воин прошлых столетий и биографии людей приближенных к этим событиям."> 
+
+<!-- Main -->
+
+    <div id="main">
+
+        <!-- Post -->
+       {% for i in 0..post_count %}
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2><a href="{{ post[i].slug }}">{{ post[i].header}}</a></h2>
+                    <p>{{ post[i].headertext }}</p>
+                </div>
+                <div class="meta">
+                    <time class="published" datetime="{{ post[i].date|date("d-m-Y") }}">{{ post[i].date|date("d-m-Y") }}</time>
+                    <a href="#" class="author"><span class="name">ПРАПОРЩИК ЗАДОВ</span><img src="{{ asset('images/vano_auth.jpg') }}" alt="Фото автора" /></a>
+                </div>
+            </header>
+            <a href="{{ post[i].slug }}" class="image featured"><img src="{{ post[i].photoLink }}" alt="{{ post[i].header}}" /></a>
+
+            {% if post[i].text != 'PicOnly' %}
+
+            <p> {{ post[i].text|slice(0,350)|striptags('<a> <li> <ul> <strong> <h2> <h3> <img>') | raw }}...</p>
+            <footer>
+                <ul class="actions">
+                    <li><a href="{{ post[i].slug }}" class="button large">Читать далее</a></li>
+                </ul>
+                <ul class="stats">
+                    {% else %}
+                    <footer>
+                        <ul class="stats">
+                    {% endif %}
+                    <li><a href="?query={{ post[i].tag }}">{{ post[i].tag }}</a></li>
+                    <li><a href="#" class="icon fa-heart">{{ post[i].views // 38 }}</a></li>
+                    <li><a href="#" class="icon fa-comment">{{ post[i].views }}</a></li>
+                </ul>
+            </footer>
+        </article>
+
+        {% endfor %}
+
+
+
+
+
+
+        <!-- Pagination -->
+        <ul class="actions pagination">
+            <li><a href="" class="disabled button large previous">Предыдущая</a></li>
+            <li><a href="page-1" class="button large next">Следующая</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Sidebar -->
+    <section id="sidebar">
+
+        <!-- Intro -->
+        <section id="intro">
+            <a href="{{ mainPageLink }}" class="logo"><img src="{{ asset('images/logo.png') }}" alt="Лого" /></a>
+            <header>
+                <h2>Выстрел сквозь века</h2>
+                <p>Сайт о сражениях XX века.</p>
+            </header>
+        </section>
+
+        <!-- Mini Posts -->
+        <section>
+            <div class="mini-posts">
+
+                <!-- Mini Post  X4-->
+                {% for i in 0..post_count_twig_var %}
+
+                <article class="mini-post">
+                    <header>
+                        <h3><a href="{{ med_post[i].slug }}">{{ med_post[i].header }}</a></h3>
+                        <time class="published">{{ med_post[i].date }}</time>
+                        <a href="#" class="author"><img src="{{ asset('images/vano_auth.jpg') }}" alt="Фото автора" /></a>
+                    </header>
+                    <a href="{{ med_post[i].slug }}" class="image"><img src="{{ med_post[i].photo_link }}" alt="{{ med_post[i].header }}" /></a>
+                </article>
+
+                {% endfor %}
+
+
+            </div>
+        </section>
+
+
+        <!-- Posts List -->
+        <section>
+            <ul class="posts">
+                {% for i in 0..post_count_twig_var %}
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="{{ one_post[i].slug }}">{{ one_post[i].header }}</a></h3>
+                            <time class="published">{{  one_post[i].date }}</time>
+                        </header>
+                        <a href="{{ one_post[i].slug }}" class="image"><img src="{{ one_post[i].photo_link }}" alt="{{ one_post[i].header }}" /></a>
+                    </article>
+                </li>
+
+                {% endfor %}
+
+            </ul>
+        </section>
+
+     {% include 'main/footer.html.twig' %}

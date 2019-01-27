@@ -1,0 +1,64 @@
+{% include 'main/header.html.twig' %}
+
+<!-- Post -->
+{% if post_count >=  0 %}
+    <style>
+
+        #wrapper{
+
+            display: block !important;
+        }
+
+    </style>
+    {% for i in 0..post_count %}
+        <article class="post">
+            <header>
+                <div class="title">
+                    <h2><a href="{{ post[i].slug }}">{{ post[i].header}}</a></h2>
+                    <p>{{ post[i].headertext }}</p>
+                </div>
+                <div class="meta">
+                    <time class="published" datetime="{{ post[i].date|date("d-m-Y") }}">{{ post[i].date|date("m-d-Y") }}</time>
+                    <a href="#" class="author"><span class="name">ПРАПОРЩИК ЗАДОВ</span><img src="{{ asset('images/vano_auth.jpg') }}" alt="Фото автора" /></a>
+                </div>
+            </header>
+            <a href="{{ post[i].slug }}" class="image featured"><img src="{{ post[i].photoLink }}" alt="{{ post[i].header}}" /></a>
+            {% if post[i].text != 'PicOnly' %}
+
+            <p> {{ post[i].text|slice(0,350)|striptags('<a> <li> <ul> <strong> <h2> <h3> <img> <iframe>') | raw |nl2br }}...</p>
+            <footer>
+                <ul class="actions">
+                    <li><a href="{{ post[i].slug }}" class="button large">Читать далее</a></li>
+                </ul>
+                <ul class="stats">
+                    {% else %}
+                    <footer>
+                        <ul class="stats">
+                            {% endif %}
+                    <li><a href="#">{{ post[i].tag }}</a></li>
+                    <li><a href="#" class="icon fa-heart">{{ post[i].views // 38 }}</a></li>
+                    <li><a href="#" class="icon fa-comment">{{ post[i].views }}</a></li>
+                </ul>
+            </footer>
+        </article>
+
+    {% endfor %}
+
+{% else %}
+
+    <p> Извините, по Вашему запросу ничего не найдено</p>
+
+    <style>
+
+        #wrapper{
+
+            display: block;
+            margin: 0 !important;
+        }
+
+    </style>
+
+{% endif %}
+
+{% include 'main/footer.html.twig' %}
+

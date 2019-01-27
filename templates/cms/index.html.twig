@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% set tag_a = '<a href="URL">Text</a>' %}
+    {% set tag_strong = '<strong> Привет </strong>' %}
+    {% set tag_list = '<ul> <li> Пункт 1</li> <li> Пункт 2</li> </ul>' %}
+    {% set tag_h = '<h2>Привет</h2> <h3>Привет</h3>' %}
+    {% set tag_img = '<img class="adp_img_post" src="https://twimg.com/img/photo.jpg" alt="Описание к фото"> ' %}
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title %}AddPost{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+{% block body %}
+
+{{ form(post_form) }}
+
+    <a style="margin-left: 92%;" href="/">На главную</a>
+
+    <table border="1" width="100%" cellpadding="5">
+        <tr>
+            <th>Описание</th>
+            <th>Функция</th>
+        </tr>
+        <tr>
+            <td>Создание ссылки</td>
+            <td>{{ tag_a }}</td>
+        </tr>
+        <tr>
+            <td>Создание поста только с фото</td>
+            <td>В поле 'Text' вставить зачение - "PicOnly"</td>
+        </tr>
+        <tr>
+            <td>Сделать текст полужирным</td>
+            <td>{{ tag_strong }} <strong> - Привет </strong> <br>Если это ключ то делать через h2 или h3 </td>
+        </tr>
+        <tr>
+            <td>Создание списка</td>
+            <td>{{ tag_list }} - <ul> <li> Пункт 1</li> <li> Пункт 2</li> </ul></td>
+        </tr>
+        <tr>
+            <td>Создание заголовков</td>
+
+            <td>{{ tag_h }} - <h2>Привет</h2> <h3>Привет</h3></td>
+        </tr>
+        <tr>
+            <td>Добавить фото</td>
+            <td>{{ tag_img }} - <img src="{{ asset('favicon/favicon_64x64.png') }}" alt="Альт"> </td>
+        </tr>
+        <tr>
+            <td>Вставка видео</td>
+            <td>Просто скопировать html код видео youtube</td>
+        </tr>
+
+    </table>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+{% endblock %}
+</body>
+</html>

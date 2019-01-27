@@ -1,0 +1,49 @@
+{% include 'main/header.html.twig' %}
+<style>
+
+    #wrapper{
+
+        display: block !important;
+    }
+
+</style>
+
+<!-- Main -->
+<div id="main">
+
+    <!-- Post -->
+    <article class="post">
+        <header>
+            <div class="title">
+                <h2>{{ post_page[0].header }}</h2>
+                <p>{{ post_page[0].header_text }}</p>
+                <p> <a href="/"> Главная </a> ● <a href="{{ hleb_crosh_link }}"> {{ hleb_crosh }} </a> ● <a href="{{ post_page[0].slug }}"> {{ post_page[0].header }} </a> </p>
+            </div>
+            <div class="meta">
+                <time class="published" datetime="{{ post_page[0].date|date("d-m-Y") }}">{{ post_page[0].date|date("m-d-Y") }}</time>
+                <a href="#" class="author"><span class="name">ПРАПОРЩИК ЗАДОВ</span><img src="{{ asset('images/vano_auth.jpg') }}" alt="" /></a>
+            </div>
+        </header>
+        <span class="image featured"><img src="{{ post_page[0].photo_link }}" alt="{{ post_page[0].header }}" /></span>
+
+            {% if text_split[i] != 'PicOnly' %}
+            <p>  {{ post_page[0].text|striptags('<a> <li> <ul> <strong> <h2> <h3> <img> <iframe>') | raw |nl2br  }}   </p>
+            {% endif %}
+
+
+        <footer>
+            <ul class="stats">
+                <li><a href="#">{{ post_page[0].tag }}</a></li>
+                <li><a href="#" class="icon fa-heart">{{ post_page[0].views // 38}}</a></li>
+                <li><a href="#" class="icon fa-comment">{{ post_page[0].views }}</a></li>
+            </ul>
+        </footer>
+    </article>
+
+</div>
+
+
+
+
+
+{% include 'main/footer.html.twig' %}

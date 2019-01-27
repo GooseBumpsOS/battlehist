@@ -1,0 +1,74 @@
+{% include 'main/header.html.twig' %}
+
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- Post -->
+        
+        {% for i in 0..post_count %}
+
+            <article class="post">
+                <header>
+                    <div class="title">
+                        <h2><a href="{{ post_page[i].slug}}">{{  post_page[i].header }}</a></h2>
+                        <p>{{  post_page[i].headerText }}</p>
+                    </div>
+                    <div class="meta">
+                        <time class="published" datetime="{{ post_page[i].date|date("d-m-Y") }}">{{ post_page[i].date|date("d-m-Y") }}</time>
+                        <a href="#" class="author"><span class="name">ПРАПОРЩИК ЗАДОВ</span><img src="{{ asset('images/vano_auth.jpg') }}" alt="Фото автора" /></a>
+                    </div>
+                </header>
+                <a href="{{ post_page[i].slug}}" class="image featured"><img src="{{ post_page[i].PhotoLink }}" alt="{{  post_page[i].header }}" /></a>
+                {% if post_page[i].text != 'PicOnly' %}
+
+                <p> {{ post_page[i].text|slice(0,350)|striptags('<a> <li> <ul> <strong> <h2> <h3> <img>') | raw |nl2br  }}...</p>
+                <footer>
+                    <ul class="actions">
+                        <li><a href="{{ post_page[i].slug }}" class="button large">Читать далее</a></li>
+                    </ul>
+                    <ul class="stats">
+                        {% else %}
+                        <footer>
+                            <ul class="stats">
+                                {% endif %}
+                        <li><a href="?query={{ post_page[i].tag }}">{{ post_page[i].tag }}</a></li>
+                        <li><a href="#" class="icon fa-heart">{{ post_page[i].views // 38 }}</a></li>
+                        <li><a href="#" class="icon fa-comment">{{  post_page[i].views }}</a></li>
+                    </ul>
+                </footer>
+            </article>
+
+        {% endfor %}
+
+
+
+
+
+
+
+
+        <!-- Pagination -->
+        <ul class="actions pagination">
+            <li><a href="page-{{ prev_twig_page }}" class="{% if current_page == 0 %} disabled {% endif %} button large previous">Предыдущая</a></li>
+            <li><a href="page-{{ next_num_page }}" class="{{ button_status }} button large next">Следующая</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Sidebar -->
+    <section id="sidebar">
+
+        <!-- Intro -->
+        <section id="intro">
+            <a href="https://battlehist.ru" class="logo"><img src="{{ asset('images/logo.png') }}" alt="Лого battlehist.ru" /></a>
+            <header>
+                <h2>Эхо военных конфликтов</h2>
+                <p>Сайт об истории сражений XX века.</p>
+            </header>
+        </section>
+
+
+
+
+{% include 'main/footer.html.twig' %}
